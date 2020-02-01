@@ -12,4 +12,10 @@ export default (app: Application) => {
     '/api/v1/admin/products',
     controller.api.v1.admin.products,
   );
+
+  router.resources(
+    'admin_articles',
+    '/api/v1/admin/articles',
+    controller.api.v1.admin.articles,
+  );
 };

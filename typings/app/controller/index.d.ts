@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportHome from '../../../app/controller/home';
+import ExportApiV1AdminArticles from '../../../app/controller/api/v1/admin/articles';
 import ExportApiV1AdminBase from '../../../app/controller/api/v1/admin/base';
 import ExportApiV1AdminProducts from '../../../app/controller/api/v1/admin/products';
 
@@ -12,6 +13,7 @@ declare module 'egg' {
     api: {
       v1: {
         admin: {
+          articles: ExportApiV1AdminArticles;
           base: ExportApiV1AdminBase;
           products: ExportApiV1AdminProducts;
         }
