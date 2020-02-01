@@ -7,7 +7,8 @@ export default class ProductsController extends Controller {
    */
   async index() {
     const { ctx } = this;
-    ctx.body = [];
+    const result = await ctx.service.products.list({});
+    ctx.body = result;
   }
 
   /**
@@ -17,9 +18,11 @@ export default class ProductsController extends Controller {
    */
   async show() {
     const { ctx } = this;
+    const result = await ctx.service.products.one(ctx.params.id);
     ctx.body = {
       code: 1,
       msg: '获取单条记录',
+      data: result,
     };
   }
 
@@ -29,10 +32,11 @@ export default class ProductsController extends Controller {
    */
   async create() {
     const { ctx } = this;
+    const result = await ctx.service.products.save(ctx.request.body);
     ctx.body = {
       code: 1,
       msg: '新增成功',
-      data: ctx.request.body,
+      data: result,
     };
   }
 
@@ -43,11 +47,14 @@ export default class ProductsController extends Controller {
    */
   async update() {
     const { ctx } = this;
+    const result = await ctx.service.products.update(
+      ctx.params.id,
+      ctx.request.body,
+    );
     ctx.body = {
       code: 1,
       msg: '修改成功',
-      id: ctx.params.id,
-      data: ctx.request.body,
+      data: result,
     };
   }
 
@@ -58,9 +65,11 @@ export default class ProductsController extends Controller {
    */
   async destroy() {
     const { ctx } = this;
+    const result = await ctx.service.products.deleteOne(ctx.params.id);
     ctx.body = {
       code: 1,
       msg: '删除成功',
+      data: result,
     };
   }
 }
