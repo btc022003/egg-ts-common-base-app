@@ -9,6 +9,6 @@ export default class HomeController extends Controller {
   public async demo() {
     const { ctx } = this;
     // ctx.body = '你好';
-    ctx.body = await ctx.service.products.list(); // 查询数据库的数据进行展示
+    ctx.body = await ctx.service.products.list({}); // 查询数据库的数据进行展示
   }
 }
